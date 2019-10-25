@@ -32,7 +32,16 @@ const project = {
             ctx.status = 200;
         })
         .catch(err =>{ctx.body = 'error: ' + err; ctx.status = 500;})
+    },
+    getAllProjects: (ctx) => {
+        return ctx.db.collection('project').find().toArray()
+        .then((results)=>{
+            ctx.body = results;
+            ctx.status = 200;
+        })
+        .catch(err =>{ctx.body = 'error: ' + err; ctx.status = 500;})
     }
+
 }
 
 module.exports = project;

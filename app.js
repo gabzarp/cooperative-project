@@ -4,6 +4,7 @@ const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
 const project = require('./controllers/project');
 const projectEvaluation = require('./controllers/project_evaluation');
+const projectDeliveries = require('./controllers/project_deliveries');
 const mongo = require('koa-mongo')
 const app = new Koa();
 app.use(mongo({
@@ -25,9 +26,14 @@ app.use(logger());
 router.post('/project', project.createProject)
       .get('/project/:id', project.getProjectById)
       .delete('/project/:id', project.deleteProject)
+      .get('/project', project.getAllProjects)
       
-      .post('/project_evaluation/:id', projectEvaluation.createProject )
-      .put('/project_evaluation/:id', projectEvaluation.updateProject );
+      .post('/project_evaluation/:id', projectEvaluation.createEvaluation )
+      .put('/project_evaluation/:id', projectEvaluation.updateEvaluation )
+      
+      .post('/project_deliveries/:id', projectDeliveries.createDelivery )
+      .put('/project_deliveries/:id', projectDeliveries.updateDelivery )
+      ;
 
 app.use(router.routes());
 

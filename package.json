@@ -22,6 +22,6 @@
     "koa-logger": "^3.2.1",
     "koa-mongo": "^1.8.2",
     "koa-router": "^7.4.0",
-    "nodemon": "^1.19.1"
+    "nodemon": "^2.0.22"
   }
 }
